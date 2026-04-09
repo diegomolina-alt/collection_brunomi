@@ -1,0 +1,28 @@
+info:
+  name: QA-Consultar solicitud BFF
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v1/applications/cmlv4gcq900a3b60ikpnq1tig
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: Authorization
+      value: Bearer {{ms_access_token}}
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+runtime:
+  variables:
+    - name: applicationId
+      value: "1051212311212"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

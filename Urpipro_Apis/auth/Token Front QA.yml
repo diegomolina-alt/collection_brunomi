@@ -1,0 +1,49 @@
+info:
+  name: Token Front QA
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: https://login.microsoftonline.com/8db8eb94-00a5-42b3-a1b0-429086455cb4/oauth2/v2.0/token
+  headers:
+    - name: Content-Type
+      value: application/x-www-form-urlencoded
+    - name: User-Agent
+      value: insomnia/12.1.0
+  body:
+    type: form-urlencoded
+    data:
+      - name: client_id
+        value: 44d49b13-ae25-4e6e-a617-908aac067ae0
+      - name: grant_type
+        value: password
+      - name: scope
+        value: api://0b31165e-a3e5-4940-a167-b47b83662d98/access_as_user offline_access openid profile
+      - name: username
+        value: tmpqa77354@mibanco.com.pe
+      - name: client_secret
+        value: DVn8Q~Jg4boPWDpLpIQ-34SaCEklWphbgPJ8laPx
+      - name: password
+        value: SD1$USRTEMP07
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // Se ejecuta después de recibir la respuesta
+        const body = res.body;
+        const token = body?.access_token;
+
+        if (token) {
+          bru.setVar('ms_access_token', token);
+          console.log('Token guardado correctamente en ms_access_token');
+        } else {
+          console.log('No se encontró access_token en la respuesta:', body);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

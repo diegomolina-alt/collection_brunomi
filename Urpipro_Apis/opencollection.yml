@@ -1,0 +1,26 @@
+opencollection: 1.0.0
+
+info:
+  name: Urpipro_Apis
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+  clientCertificates:
+    - domain: apimextqa.mibanco.com.pe
+      type: pkcs12
+      pkcs12FilePath: ../mtls/client.pfx
+      passphrase: tI'2hUAMHs4qTGYx
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

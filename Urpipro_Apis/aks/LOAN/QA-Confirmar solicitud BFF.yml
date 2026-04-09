@@ -1,0 +1,27 @@
+info:
+  name: QA-Confirmar solicitud BFF
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v1/applications/cmkq5rrib0006920hrfp2pd76/confirm
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: Authorization
+      value: Bearer {{ms_access_token}}
+  body:
+    type: json
+    data: |-
+      {   
+        "eligibilityReason": "El cliente cumple con los criterios de evaluación crediticia",   
+        "depositAccountReferenceId": "CREATE_ACCOUNT"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

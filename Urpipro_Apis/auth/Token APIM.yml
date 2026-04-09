@@ -1,0 +1,45 @@
+info:
+  name: Token APIM
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: https://login.microsoftonline.com/8db8eb94-00a5-42b3-a1b0-429086455cb4/oauth2/v2.0/token
+  headers:
+    - name: Content-Type
+      value: application/x-www-form-urlencoded
+    - name: User-Agent
+      value: insomnia/12.1.0
+  body:
+    type: form-urlencoded
+    data:
+      - name: client_id
+        value: 44d49b13-ae25-4e6e-a617-908aac067ae0
+      - name: grant_type
+        value: client_credentials
+      - name: scope
+        value: 27c3ed60-dcbf-40e1-99ac-70607969803c/.default
+      - name: client_secret
+        value: s438Q~gjkrdx1TtKcjnCb1j6atj7f7rHSGaKZb6X
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // Se ejecuta después de recibir la respuesta
+        const body = res.body;
+        const token = body?.access_token;
+
+        if (token) {
+          bru.setVar('apim_access_token', token);
+          console.log('Token guardado correctamente en apim_access_token');
+        } else {
+          console.log('No se encontró apim_access_token en la respuesta:', body);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,39 @@
+info:
+  name: QA-Rates BFF
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v1/applications/pricing/rates?identificationType=DNI&termMonths=3&requestedAmount=6400&productIdentification=1986&identificationValue=88781237
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: Authorization
+      value: Bearer {{ms_access_token}}
+  params:
+    - name: identificationType
+      value: DNI
+      type: query
+    - name: termMonths
+      value: "3"
+      type: query
+    - name: requestedAmount
+      value: "6400"
+      type: query
+    - name: productIdentification
+      value: "1986"
+      type: query
+    - name: identificationValue
+      value: "88781237"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

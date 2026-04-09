@@ -1,0 +1,55 @@
+info:
+  name: QA-Evaluacion P&G BFF
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/financial-statement/assessment
+  headers:
+    - name: Authorization-be
+      value: Bearer {{ms_access_token}}
+    - name: Ocp-Apim-Subscription-Key
+      value: 68361fdc767e4686855ec88aeb85619f
+    - name: x-consumer-id
+      value: URPI_PRO
+    - name: x-consumer-request-id
+      value: "1"
+    - name: x-consumer-correlation-id
+      value: "1"
+    - name: x-transaction-id
+      value: "1"
+    - name: x-caller-id
+      value: "1"
+    - name: Authorization
+      value: Bearer {{apim_access_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "applicant": {
+          "identificationType": "DNI",
+          "identificationValue": "88781237"
+        },
+        "simulation": {
+          "numberOfInstallments": "12",
+          "installmentAmount": "500.75",
+          "installmentCurrency": "PEN"
+        },
+        "financialAssessmentData": {
+          "netSalesAmount": 10000,
+          "marginAmount": 30,
+          "businessExpensesAmount": 500,
+          "familyExpensesAmount": 1000,
+          "financialExpensesAmount": 300,
+          "otherExpensesAmount": 200,
+          "additionalIncomeAmount": 500
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

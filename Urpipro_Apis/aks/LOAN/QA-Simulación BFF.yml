@@ -1,0 +1,38 @@
+info:
+  name: QA-Simulación BFF
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v1/simulations
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: Authorization
+      value: Bearer {{ms_access_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "applicant": {
+          "identificationType": "DNI",
+          "identificationValue": "88781237"
+        },
+        "simulation": {
+          "productIdentification": "1986",
+          "requestedAmount": 7000,
+          "requestedAmountCurrency": "PEN",
+          "numberOfInstallments": 3,
+          "offerRate": 3.37,
+          "paymentDayOfMonth": "25",
+          "graceInstallments": 0
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

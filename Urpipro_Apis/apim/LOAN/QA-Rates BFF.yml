@@ -1,0 +1,51 @@
+info:
+  name: QA-Rates BFF
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/applications/pricing/rates?identificationType=DNI&termMonths=3&requestedAmount=6400&productIdentification=1986&identificationValue=88781237
+  headers:
+    - name: Authorization-be
+      value: Bearer {{ms_access_token}}
+    - name: Authorization
+      value: Bearer {{apim_access_token}}
+    - name: x-consumer-id
+      value: URPI_PRO
+    - name: x-consumer-request-id
+      value: "1"
+    - name: x-consumer-correlation-id
+      value: "1"
+    - name: x-transaction-id
+      value: "1"
+    - name: x-caller-id
+      value: "1"
+    - name: Ocp-Apim-Subscription-Key
+      value: 68361fdc767e4686855ec88aeb85619f
+  params:
+    - name: identificationType
+      value: DNI
+      type: query
+    - name: termMonths
+      value: "3"
+      type: query
+    - name: requestedAmount
+      value: "6400"
+      type: query
+    - name: productIdentification
+      value: "1986"
+      type: query
+    - name: identificationValue
+      value: "88781237"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,9 +1,4 @@
-# Certificados en cualquier nivel
 **/certs/
 *.pfx
-
-# Otros sensibles
-*.txt
-
-# Mac
+cert_pass.txt
 .DS_Store

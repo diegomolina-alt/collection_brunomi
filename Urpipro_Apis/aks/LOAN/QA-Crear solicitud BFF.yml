@@ -1,0 +1,71 @@
+info:
+  name: QA-Crear solicitud BFF
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v1/applications
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: Authorization
+      value: Bearer {{ms_access_token}}
+  body:
+    type: json
+    data: "{
+
+      \  \"applicant\": {
+
+      \    \"identificationType\": \"DNI\",
+
+      \    \"identificationValue\": \"17415731\"
+
+      \  },
+
+      \  \"simulation\": {
+
+      \    \"productIdentification\": \"1996\",
+
+      \    \"requestedAmount\": 7500,
+
+      \    \"requestedAmountCurrency\": \"PEN\",
+
+      \    \"numberOfInstallments\": 24,
+
+      \    \"offerRate\": 6.51,
+
+      \    \"paymentDayOfMonth\": \"1\",
+
+      \    \"graceInstallments\": 0
+
+      \  },
+
+      \  \"financialAssessmentData\": {
+
+      \    \"netSalesAmount\": 20000,
+
+      \    \"marginAmount\": 45,
+
+      \    \"businessExpensesAmount\": 3000,
+
+      \    \"familyExpensesAmount\": 2000,
+
+      \    \"financialExpensesAmount\": 500,
+
+      \    \"otherExpensesAmount\": 300,
+
+      \    \"additionalIncomeAmount\": 1200
+
+      \  }
+
+      }
+
+      \  "
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,43 @@
+info:
+  name: QA-Cancelar solicitud BFF
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/applications/:applicationId/cancel
+  headers:
+    - name: Authorization-be
+      value: Bearer {{ms_access_token}}
+    - name: Authorization
+      value: Bearer {{apim_access_token}}
+    - name: x-consumer-id
+      value: URPI_PRO
+    - name: x-consumer-request-id
+      value: "1"
+    - name: x-consumer-correlation-id
+      value: "1"
+    - name: x-transaction-id
+      value: "1"
+    - name: x-caller-id
+      value: "1"
+    - name: Ocp-Apim-Subscription-Key
+      value: 68361fdc767e4686855ec88aeb85619f
+  params:
+    - name: applicationId
+      value: cmljppbdi004n7l0hphcrmncw
+      type: path
+  body:
+    type: json
+    data: |-
+      {   
+        "eligibilityReason": "El cliente cumple con los criterios de evaluación crediticia",   
+        "depositAccountReferenceId": 12345 
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

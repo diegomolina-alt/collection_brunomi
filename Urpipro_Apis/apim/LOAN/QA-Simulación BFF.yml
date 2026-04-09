@@ -1,0 +1,50 @@
+info:
+  name: QA-Simulación BFF
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/simulations
+  headers:
+    - name: Authorization-be
+      value: Bearer {{ms_access_token}}
+    - name: Ocp-Apim-Subscription-Key
+      value: 68361fdc767e4686855ec88aeb85619f
+    - name: x-consumer-id
+      value: URPI_PRO
+    - name: x-consumer-request-id
+      value: "1"
+    - name: x-consumer-correlation-id
+      value: "1"
+    - name: x-transaction-id
+      value: "1"
+    - name: x-caller-id
+      value: "1"
+    - name: Authorization
+      value: Bearer {{apim_access_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "applicant": {
+          "identificationType": "DNI",
+          "identificationValue": "88781237"
+        },
+        "simulation": {
+          "productIdentification": "1986",
+          "requestedAmount": 7000,
+          "requestedAmountCurrency": "PEN",
+          "numberOfInstallments": 3,
+          "offerRate": 3.37,
+          "paymentDayOfMonth": "25",
+          "graceInstallments": 0
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

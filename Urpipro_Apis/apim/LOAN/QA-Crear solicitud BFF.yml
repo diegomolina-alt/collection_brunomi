@@ -1,0 +1,83 @@
+info:
+  name: QA-Crear solicitud BFF
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/applications
+  headers:
+    - name: Authorization-be
+      value: Bearer {{ms_access_token}}
+    - name: Authorization
+      value: Bearer {{apim_access_token}}
+    - name: x-consumer-id
+      value: URPI_PRO
+    - name: x-consumer-request-id
+      value: "1"
+    - name: x-consumer-correlation-id
+      value: "1"
+    - name: x-transaction-id
+      value: "1"
+    - name: x-caller-id
+      value: "1"
+    - name: Ocp-Apim-Subscription-Key
+      value: 68361fdc767e4686855ec88aeb85619f
+  body:
+    type: json
+    data: "{
+
+      \  \"applicant\": {
+
+      \    \"identificationType\": \"DNI\",
+
+      \    \"identificationValue\": \"17415731\"
+
+      \  },
+
+      \  \"simulation\": {
+
+      \    \"productIdentification\": \"1996\",
+
+      \    \"requestedAmount\": 7500,
+
+      \    \"requestedAmountCurrency\": \"PEN\",
+
+      \    \"numberOfInstallments\": 24,
+
+      \    \"offerRate\": 6.51,
+
+      \    \"paymentDayOfMonth\": \"1\",
+
+      \    \"graceInstallments\": 0
+
+      \  },
+
+      \  \"financialAssessmentData\": {
+
+      \    \"netSalesAmount\": 20000,
+
+      \    \"marginAmount\": 45,
+
+      \    \"businessExpensesAmount\": 3000,
+
+      \    \"familyExpensesAmount\": 2000,
+
+      \    \"financialExpensesAmount\": 500,
+
+      \    \"otherExpensesAmount\": 300,
+
+      \    \"additionalIncomeAmount\": 1200
+
+      \  }
+
+      }
+
+      \  "
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
