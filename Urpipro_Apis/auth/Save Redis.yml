@@ -1,11 +1,11 @@
 info:
   name: Save Redis
   type: http
-  seq: 2
+  seq: 3
 
 http:
   method: GET
-  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/customer-relationship/v1/employees/employee-code
+  url: "{{apim_base_url}}/customer-relationship/v1/employees/employee-code"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,12 +23,6 @@ http:
       value: "1"
     - name: Authorization
       value: Bearer {{apim_access_token}}
-    - name: x-secret-value
-      value: y5OYng94X%$Ni&VA#TN!ylHBK2$fmxc$v9#bjo^RXE3g59M*#vNEHb^mM#KWJUChP
-      disabled: true
-    - name: x-secret-value
-      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
-      disabled: true
 
 settings:
   encodeUrl: true

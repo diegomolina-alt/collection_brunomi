@@ -1,11 +1,11 @@
 info:
   name: QA-Evaluacion P&G BFF
   type: http
-  seq: 4
+  seq: 7
 
 http:
   method: POST
-  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/financial-statement/assessment
+  url: "{{apim_base_url}}/loan-origination/v1/financial-statement/assessment"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}

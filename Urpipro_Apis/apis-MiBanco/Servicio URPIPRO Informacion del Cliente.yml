@@ -1,0 +1,30 @@
+info:
+  name: Servicio URPIPRO Informacion del Cliente
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{aks_base_url}}/v1/transversal-api/mic-azure-urpipro-customer_information/customer-reference-data/customer-reference/{{identificationType}}/{{identificationValue}}"
+  headers:
+    - name: Authorization
+      value: "{{ms_access_token}}"
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: x-secret-value
+      value: y5OYng94X%$Ni&VA#TN!ylHBK2$fmxc$v9#bjo^RXE3g59M*#vNEHb^mM#KWJUChP
+      disabled: true
+  auth: inherit
+
+runtime:
+  variables:
+    - name: identificationType
+      value: C
+    - name: identificationValue
+      value: "18198618"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

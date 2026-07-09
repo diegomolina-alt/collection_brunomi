@@ -1,11 +1,11 @@
 info:
-  name: QA-Consultar Dposit Accounts BFF
+  name: QA-Confirmar solicitud BFF
   type: http
-  seq: 5
+  seq: 9
 
 http:
-  method: GET
-  url: "{{apim_base_url}}/loan-origination/v1/applicants/deposit-accounts?identificationType=DNI&identificationValue=75163537"
+  method: PUT
+  url: "{{apim_base_url}}/loan-origination/v1/applications/cmkq5rrib0006920hrfp2pd76/confirm"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,16 +23,13 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
-  params:
-    - name: identificationType
-      value: DNI
-      type: query
-    - name: identificationValue
-      value: "75163537"
-      type: query
   body:
     type: json
-    data: ""
+    data: |-
+      {   
+        "eligibilityReason": "El cliente cumple con los criterios de evaluación crediticia",   
+        "depositAccountReferenceId": "CREATE_ACCOUNT"
+      }
   auth: inherit
 
 settings:

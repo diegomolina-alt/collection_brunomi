@@ -1,11 +1,11 @@
 info:
   name: QA-Consultar solicitud BFF
   type: http
-  seq: 4
+  seq: 6
 
 http:
   method: GET
-  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/applications/cmlv4gcq900a3b60ikpnq1tig
+  url: "{{apim_base_url}}/loan-origination/v1/applications/cmlv4gcq900a3b60ikpnq1tig"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}

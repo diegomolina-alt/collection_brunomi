@@ -1,11 +1,11 @@
 info:
-  name: QA-Consultar Dposit Accounts BFF
+  name: QA-Terminos solicitud BFF segunda linea
   type: http
-  seq: 5
+  seq: 14
 
 http:
   method: GET
-  url: "{{apim_base_url}}/loan-origination/v1/applicants/deposit-accounts?identificationType=DNI&identificationValue=75163537"
+  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/customer-offers/terms-and-conditions/credit-line-drawdown?productIdentification=1501&identificationValue=12345678&identificationType=DNI
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -24,11 +24,14 @@ http:
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
   params:
-    - name: identificationType
-      value: DNI
+    - name: productIdentification
+      value: "1501"
       type: query
     - name: identificationValue
-      value: "75163537"
+      value: "12345678"
+      type: query
+    - name: identificationType
+      value: DNI
       type: query
   body:
     type: json

@@ -1,0 +1,63 @@
+info:
+  name: QA-Simulación BFF V2
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{apim_base_url}}/loan-origination/v2/simulations"
+  headers:
+    - name: Authorization-be
+      value: Bearer {{ms_access_token}}
+    - name: Authorization
+      value: Bearer {{apim_access_token}}
+    - name: x-consumer-id
+      value: URPI_PRO
+    - name: x-consumer-request-id
+      value: "1"
+    - name: x-consumer-correlation-id
+      value: "1"
+    - name: x-transaction-id
+      value: "1"
+    - name: x-caller-id
+      value: "1"
+    - name: Ocp-Apim-Subscription-Key
+      value: 68361fdc767e4686855ec88aeb85619f
+  body:
+    type: json
+    data: |
+      {
+        "applicant": {
+          "identificationType": "DNI",
+          "identificationValue": "46246759"
+        },
+        "simulation": {
+          "productIdentification": "1501",
+          "requestedAmount": 5000,
+          "requestedAmountCurrency": "PEN",
+          "numberOfInstallments": 12,
+          "offerRate": 5.33,
+          "paymentDayOfMonth": 25,
+          "graceInstallments": 0
+        },
+        "salesRepresentativeCode": "EMP001",
+        "optionalInsuranceService": [
+          {
+            "insuranceProductReference": "MIC-SOAT-001",
+            "insurancePremiumInstallmentAmount": 15.50,
+            "currency": "PEN"
+          },
+          {
+            "insuranceProductReference": "MIC-SOAT-002",
+            "insurancePremiumInstallmentAmount": 10.50,
+            "currency": "PEN"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

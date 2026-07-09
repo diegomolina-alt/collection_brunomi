@@ -1,28 +1,16 @@
 info:
   name: QA-Simulación BFF
   type: http
-  seq: 3
+  seq: 30
 
 http:
   method: POST
-  url: "{{apim_base_url}}/loan-origination/v1/simulations"
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v1/simulations
   headers:
-    - name: Authorization-be
-      value: Bearer {{ms_access_token}}
-    - name: Ocp-Apim-Subscription-Key
-      value: 68361fdc767e4686855ec88aeb85619f
-    - name: x-consumer-id
-      value: URPI_PRO
-    - name: x-consumer-request-id
-      value: "1"
-    - name: x-consumer-correlation-id
-      value: "1"
-    - name: x-transaction-id
-      value: "1"
-    - name: x-caller-id
-      value: "1"
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
     - name: Authorization
-      value: Bearer {{apim_access_token}}
+      value: Bearer {{ms_access_token}}
   body:
     type: json
     data: |-
@@ -33,7 +21,7 @@ http:
         },
         "simulation": {
           "productIdentification": "1986",
-          "requestedAmount": 500,
+          "requestedAmount": 7000,
           "requestedAmountCurrency": "PEN",
           "numberOfInstallments": 3,
           "offerRate": 3.37,

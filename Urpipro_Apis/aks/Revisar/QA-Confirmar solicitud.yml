@@ -1,0 +1,26 @@
+info:
+  name: QA-Confirmar solicitud
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/v1/loan-origination/applications/cmken3dji0008t40hw9xc3ug9
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+  body:
+    type: json
+    data: |-
+      {
+        "eligibilityReason":"Cliente conforme",
+        "depositAccountReferenceId":3333
+
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

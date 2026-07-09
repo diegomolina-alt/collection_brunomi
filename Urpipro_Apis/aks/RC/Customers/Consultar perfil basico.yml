@@ -1,19 +1,23 @@
 info:
-  name: QA-retry signature BFF
+  name: Consultar perfil basico
   type: http
-  seq: 4
+  seq: 1
 
 http:
-  method: POST
-  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v1/applications/cmksjgpqp000fj40i4hr90ve0/retry-signature
+  method: GET
+  url: "{{aks_base_url}}/customer-relationship/v1/customers/profile-basic?documentType=C&documentNumber=48894764"
   headers:
     - name: x-secret-value
       value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
     - name: Authorization
       value: Bearer {{ms_access_token}}
-  body:
-    type: json
-    data: ""
+  params:
+    - name: documentType
+      value: C
+      type: query
+    - name: documentNumber
+      value: "48894764"
+      type: query
   auth: inherit
 
 settings:

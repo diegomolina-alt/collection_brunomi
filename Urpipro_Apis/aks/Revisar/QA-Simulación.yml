@@ -1,0 +1,43 @@
+info:
+  name: QA-Simulación
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/v1/loan-origination/repayment-simulations
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+  body:
+    type: json
+    data: |-
+      {
+        "applicant": {
+          "identificationType": "DNI",
+          "identificationValue": "10400586"
+        },
+        "proposedLoanTerms": {
+          "productIdentification": "1718",
+          "offerRate": 5.33,
+          "offerAmount": {
+            "value": 5000,
+            "currency": "PEN"
+          },
+          "repaymentSchedule": {
+            "paymentDayOfMonth": "25",
+            "numberOfInstalments": 12
+          },
+          "gracePeriod": {
+            "graceType": "N",
+            "graceInstallments": "0"
+          }
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

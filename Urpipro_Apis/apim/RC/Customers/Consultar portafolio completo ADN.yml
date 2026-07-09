@@ -1,11 +1,11 @@
 info:
-  name: QA-Confirmar solicitud BFF
+  name: Consultar portafolio completo ADN
   type: http
-  seq: 7
+  seq: 4
 
 http:
-  method: PUT
-  url: https://apimextqa.mibanco.com.pe/api/exp/urpipro/loan-origination/v1/applications/cmkq5rrib0006920hrfp2pd76/confirm
+  method: GET
+  url: "{{apim_base_url}}/customer-relationship/v2/customers/portfolio"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,13 +23,26 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
+  params:
+    - name: hasCampaign
+      value: "true"
+      type: query
+      disabled: true
+    - name: segmentCode
+      value: RB
+      type: query
+      disabled: true
+    - name: customerType
+      value: ACTIVO
+      type: query
+      disabled: true
+    - name: searchParam
+      value: DIE
+      type: query
+      disabled: true
   body:
     type: json
-    data: |-
-      {   
-        "eligibilityReason": "El cliente cumple con los criterios de evaluación crediticia",   
-        "depositAccountReferenceId": "CREATE_ACCOUNT"
-      }
+    data: ""
   auth: inherit
 
 settings:

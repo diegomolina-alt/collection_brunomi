@@ -1,0 +1,70 @@
+info:
+  name: API  DE TASAS
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{aks_base_url}}/v1/transversal-api/mic-azure-urpipro-pricing_rates/discount-pricing/pricing/retrieve"
+  headers:
+    - name: x-user-id
+      value: neobanco
+    - name: x-consumer-id
+      value: TOPAZ
+    - name: x-consumer-correlation-id
+      value: 3c18ebf9-a148-4a9f-b0a4-2347d50c1d8d
+    - name: x-consumer-request-id
+      value: 74cd2b3d-fd6b-4729-ab7a-3b3030ca993e
+    - name: x-consumer-transaction-id
+      value: 72f21314-2f10-4889-8a43-079b66f366fe
+    - name: x-caller-id
+      value: /neobanco/
+    - name: Ocp-Apim-Subscription-Key
+      value: a03a1b068a6149bebb7e452f1ddbfc94
+    - name: Content-Type
+      value: application/json
+    - name: x-transaction-id
+      value: 72e7c4d3-bb6c-40fc-908f-dac290ccb973
+    - name: Cookie
+      value: ApplicationGatewayAffinity=29fb6abfc9b48fce6ea18b9dffeda0bb; ApplicationGatewayAffinityCORS=29fb6abfc9b48fce6ea18b9dffeda0bb; ApplicationGatewayAffinity=29fb6abfc9b48fce6ea18b9dffeda0bb; ApplicationGatewayAffinityCORS=29fb6abfc9b48fce6ea18b9dffeda0bb
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: Authorization
+      value: "{{ms_access_token}}"
+    - name: x-secret-value
+      value: y5OYng94X%$Ni&VA#TN!ylHBK2$fmxc$v9#bjo^RXE3g59M*#vNEHb^mM#KWJUChP
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "BankBranchLocationReference": {
+              "BranchReference": {
+                  "BranchIdentification": {
+                      "IdentifierValue": "42902165"
+                  }
+              }
+          },
+          "Currency": {
+              "CurrencyCode": "1"
+          },
+          "ProductInstanceReference": {
+              "ProductAgreementType": "1986"
+          },
+          "RequestedAmount": "30700",
+          "Term": "12",
+          "CustomerReference": {
+              "PartyInvolvement": {
+                  "PartyRoleType": "C1",
+                  "PartyRoleName": "N"
+              }
+          }
+      }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

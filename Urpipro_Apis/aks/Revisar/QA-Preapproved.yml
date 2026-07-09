@@ -1,0 +1,61 @@
+info:
+  name: QA-Preapproved
+  type: http
+  seq: 17
+
+http:
+  method: POST
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v2/applications/pre-approved
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: Authorization
+      value: Bearer {{ms_access_token}}
+  body:
+    type: json
+    data: |2-
+       {
+        "applicant": {
+          "identificationType": "DNI",
+          "identificationValue": "72925602"
+        },
+        "simulation": {
+          "productIdentification": "1986",
+          "requestedAmount": 300,
+          "requestedAmountCurrency": "PEN",
+          "numberOfInstallments": 12,
+          "offerRate": 3.67,
+          "paymentDayOfMonth": "25",
+          "graceInstallments": 0
+        },
+        "financialAssessmentData": {
+          "netSalesAmount": 10000,
+          "marginAmount": 30,
+          "businessExpensesAmount": 500,
+          "familyExpensesAmount": 1000,
+          "financialExpensesAmount": 300,
+          "otherExpensesAmount": 200,
+          "additionalIncomeAmount": 500
+        },
+        "optionalInsuranceService": {
+          "insuranceProductReference": "MIC-SOAT-001",
+          "totalInsuranceAmount": 500,
+          "currency": "PEN",
+          "beneficiaries": [
+            {
+              "fullName": "Juan Alberto Pérez García",
+              "identificationType": "C.E.",
+              "identificationNumber": "004123456",
+              "relationshipType": "Conjugue",
+              "benefitSharePercentage": 100
+            }
+          ]
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

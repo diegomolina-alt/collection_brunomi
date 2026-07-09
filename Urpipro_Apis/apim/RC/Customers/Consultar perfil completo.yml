@@ -1,11 +1,11 @@
 info:
-  name: QA-Perfil Completo BFF
+  name: Consultar perfil completo
   type: http
   seq: 1
 
 http:
   method: GET
-  url: https://apimextqa.mibanco.com.pe/customer-relationship/v1/customers/profile-complete?documentType=C&documentNumber=48894764
+  url: "{{apim_base_url}}/customer-relationship/v1/customers/profile-complete?documentType=C&documentNumber=88781237"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,15 +23,12 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
-    - name: x-secret-value
-      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
-      disabled: true
   params:
     - name: documentType
       value: C
       type: query
     - name: documentNumber
-      value: "48894764"
+      value: "88781237"
       type: query
   body:
     type: json

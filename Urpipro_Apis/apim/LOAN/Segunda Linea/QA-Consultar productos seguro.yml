@@ -1,11 +1,11 @@
 info:
-  name: QA-Consultar Dposit Accounts BFF
+  name: QA-Consultar productos seguro
   type: http
-  seq: 5
+  seq: 2
 
 http:
   method: GET
-  url: "{{apim_base_url}}/loan-origination/v1/applicants/deposit-accounts?identificationType=DNI&identificationValue=75163537"
+  url: "{{apim_base_url}}/loan-origination/v1/brokered-products?identificationType=DNI&identificationValue=46246759"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -28,7 +28,7 @@ http:
       value: DNI
       type: query
     - name: identificationValue
-      value: "75163537"
+      value: "46246759"
       type: query
   body:
     type: json

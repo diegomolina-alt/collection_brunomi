@@ -1,0 +1,25 @@
+info:
+  name: QA-Cancelar solicitud
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/v1/loan-origination/applications/:applicationId/cancel
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+  params:
+    - name: applicationId
+      value: cmk5xtjy8001xmh0igh55mfhd
+      type: path
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

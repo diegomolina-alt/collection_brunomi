@@ -1,11 +1,11 @@
 info:
-  name: QA-Consultar Dposit Accounts BFF
+  name: Consultar autonomia ADN
   type: http
-  seq: 5
+  seq: 4
 
 http:
   method: GET
-  url: "{{apim_base_url}}/loan-origination/v1/applicants/deposit-accounts?identificationType=DNI&identificationValue=75163537"
+  url: "{{apim_base_url}}/customer-relationship/v1/employees/authorization-level"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,16 +23,6 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
-  params:
-    - name: identificationType
-      value: DNI
-      type: query
-    - name: identificationValue
-      value: "75163537"
-      type: query
-  body:
-    type: json
-    data: ""
   auth: inherit
 
 settings:

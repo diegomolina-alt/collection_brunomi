@@ -1,11 +1,11 @@
 info:
   name: Perfil cliente
   type: http
-  seq: 6
+  seq: 23
 
 http:
   method: GET
-  url: http://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/customer-relationship/v1/customers/profile-complete?documentType=C&documentNumber=48894764
+  url: http://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/customer-relationship/v1/customers/profile-complete?documentType=C&documentNumber=67727467
   headers:
     - name: x-secret-value
       value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
@@ -17,7 +17,7 @@ http:
       value: C
       type: query
     - name: documentNumber
-      value: "48894764"
+      value: "67727467"
       type: query
   auth: inherit
 

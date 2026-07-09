@@ -1,0 +1,70 @@
+info:
+  name: QA-CreditLine Drawndown-Crea Segunda línea
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{apim_base_url}}/loan-origination/v1/applications/credit-line-drawdown"
+  headers:
+    - name: Authorization-be
+      value: Bearer {{ms_access_token}}
+    - name: Authorization
+      value: Bearer {{apim_access_token}}
+    - name: x-consumer-id
+      value: URPI_PRO
+    - name: x-consumer-request-id
+      value: "1"
+    - name: x-consumer-correlation-id
+      value: "1"
+    - name: x-transaction-id
+      value: "1"
+    - name: x-caller-id
+      value: "1"
+    - name: Ocp-Apim-Subscription-Key
+      value: 68361fdc767e4686855ec88aeb85619f
+  body:
+    type: json
+    data: |-
+      {
+        "applicant": {
+          "identificationType": "DNI",
+          "identificationValue": "12345678"
+        },
+        "simulation": {
+          "productIdentification": "1501",
+          "requestedAmount": 5000,
+          "requestedAmountCurrency": "PEN",
+          "numberOfInstallments": 12,
+          "offerRate": 5.33,
+          "paymentDayOfMonth": "25",
+          "graceInstallments": 0
+        },
+        "optionalInsuranceService": {
+          "insuranceProductReference": "MIC-SOAT-001",
+          "installmentAmount": 500,
+          "currency": "PEN",
+          "beneficiaries": [
+            {
+              "fullName": "Juan Alberto Garcia",
+              "identificationType": "C.E.",
+              "identificationNumber": "004123456",
+              "relationshipType": "Conjugue",
+              "benefitSharePercentage": 100
+            }
+          ]
+        },
+        "loanPurpose": [
+          {
+            "id": "32886c4d-efed-4802-a13b-f3d8bd525590",
+            "value": "Capital de trabajo"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

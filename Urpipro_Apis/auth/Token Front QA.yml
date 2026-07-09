@@ -20,12 +20,12 @@ http:
         value: password
       - name: scope
         value: api://0b31165e-a3e5-4940-a167-b47b83662d98/access_as_user offline_access openid profile
-      - name: username
-        value: tmpqa77354@mibanco.com.pe
       - name: client_secret
-        value: DVn8Q~Jg4boPWDpLpIQ-34SaCEklWphbgPJ8laPx
+        value: s438Q~gjkrdx1TtKcjnCb1j6atj7f7rHSGaKZb6X
+      - name: username
+        value: 17353tmp@mibanco.com.pe
       - name: password
-        value: SD1$USRTEMP07
+        value: 9[1oBT9D1!
 
 runtime:
   scripts:

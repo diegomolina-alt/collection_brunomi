@@ -1,0 +1,33 @@
+info:
+  name: Consultar autonomía ADN
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{aks_base_url}}/v1/transversal-api/mic-azure-urpipro-employee_authorization_level/party-reference/authorization-level?employeeReference=62863001&statusCode=10&branchLocationReference=483"
+  headers:
+    - name: Authorization
+      value: "{{ms_access_token}}"
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+    - name: x-secret-value
+      value: y5OYng94X%$Ni&VA#TN!ylHBK2$fmxc$v9#bjo^RXE3g59M*#vNEHb^mM#KWJUChP
+      disabled: true
+  params:
+    - name: employeeReference
+      value: "62863001"
+      type: query
+    - name: statusCode
+      value: "10"
+      type: query
+    - name: branchLocationReference
+      value: "483"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

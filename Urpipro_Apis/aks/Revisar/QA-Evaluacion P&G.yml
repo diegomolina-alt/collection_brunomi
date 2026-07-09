@@ -1,0 +1,43 @@
+info:
+  name: QA-Evaluacion P&G
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/v1/loan-origination/financial-statement/assessment
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+  body:
+    type: json
+    data: |-
+      {
+        "proposedLoanTerms": {
+          "installments": {
+            "numberOfInstallments": "12",
+            "amount": "450.75",
+            "amountCurrency": "PEN"
+          }
+        },
+        "financialAssessmentData": {
+          "netSalesAmount": "15000.00",
+          "marginAmount": "350",
+          "businessExpensesAmount": "5000.00",
+          "familyExpensesAmount": "2500.00",
+          "financialExpensesAmount": "800.00",
+          "otherExpensesAmount": "600.00",
+          "additionalIncomeAmount": "1200.00"
+        },
+        "applicant": {
+          "identificationType": "DNI",
+          "identificationValue": "40822105"
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

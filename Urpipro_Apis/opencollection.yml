@@ -16,8 +16,47 @@ config:
   clientCertificates:
     - domain: apimextqa.mibanco.com.pe
       type: pkcs12
-      pkcs12FilePath: ../mtls/client.pfx
+      pkcs12FilePath: ../certs/client.pfx
       passphrase: tI'2hUAMHs4qTGYx
+
+request:
+  scripts:
+    - type: before-request
+      code: |-
+        const requestName = req.getName();
+        const url = req.getUrl();
+
+        const authRequests = [
+          "Token APIM",
+          "Token Front QA",
+          "Save Redis"
+        ];
+
+        if (!authRequests.includes(requestName)) {
+          const apimToken = bru.getVar("apim_access_token");
+          const msToken = bru.getVar("ms_access_token");
+
+          const isAks = url.includes("aks_base_url");
+
+          if (isAks) {
+            if (!msToken) {
+              console.log("AKS: ejecutando Token Front QA + Redis...");
+              await bru.runRequest("auth/Token Front QA");
+              await bru.runRequest("auth/Save Redis");
+            } else {
+              console.log("AKS: token Front existente.");
+            }
+          } else {
+            if (!apimToken || !msToken) {
+              console.log("APIM: ejecutando Token APIM + Token Front QA + Redis...");
+              await bru.runRequest("auth/Token APIM");
+              await bru.runRequest("auth/Token Front QA");
+              await bru.runRequest("auth/Save Redis");
+            } else {
+              console.log("APIM: tokens existentes.");
+            }
+          }
+        }
 bundled: false
 extensions:
   bruno:

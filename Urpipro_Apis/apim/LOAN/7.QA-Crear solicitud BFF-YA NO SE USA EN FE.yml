@@ -1,7 +1,7 @@
 info:
-  name: QA-Crear solicitud BFF
+  name: 7.QA-Crear solicitud BFF-YA NO SE USA EN FE
   type: http
-  seq: 8
+  seq: 1
 
 http:
   method: POST

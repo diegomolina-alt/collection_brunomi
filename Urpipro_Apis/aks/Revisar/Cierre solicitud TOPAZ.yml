@@ -1,0 +1,31 @@
+info:
+  name: Cierre solicitud TOPAZ
+  type: http
+  seq: 22
+
+http:
+  method: POST
+  url: https://api-mibanco-qa01.azure-api.net/adctopazmiddlewarews/v2/execute
+  headers:
+    - name: Authorization
+      value: "{{ms_access_token}}"
+    - name: Ocp-Apim-Subscription-Key
+      value: 7b49fbb8d2334e6c858fa09322054f97
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "xmlJBankFields": {
+              "nroSolicitud": 73400802
+          },
+          "serviceName": "URPI_PRO_CierreSolicitud"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

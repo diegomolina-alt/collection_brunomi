@@ -1,0 +1,28 @@
+info:
+  name: QA-Listar solicitudes
+  type: http
+  seq: 10
+
+http:
+  method: GET
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/loan-origination/v1/applicants/applications?identificationValue=69665005&identificationType=DNI
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+  params:
+    - name: identificationValue
+      value: "69665005"
+      type: query
+    - name: identificationType
+      value: DNI
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

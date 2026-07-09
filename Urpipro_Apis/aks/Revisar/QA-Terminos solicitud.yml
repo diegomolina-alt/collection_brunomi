@@ -1,0 +1,31 @@
+info:
+  name: QA-Terminos solicitud
+  type: http
+  seq: 13
+
+http:
+  method: GET
+  url: https://aks-internal-lb-qa-e2e6bvcngubpcdbh.a03.azurefd.net/v1/customer-offers/terms-and-conditions?identificationType=DNI&identificationValue=59921714&productIdentification=1996
+  headers:
+    - name: x-secret-value
+      value: Zx97$P5S6UTX&y93P%QJGa*h35rj8#$$!x&o3^%99JJC^@!kpsA98ZC67fNCtR4q2
+  params:
+    - name: identificationType
+      value: DNI
+      type: query
+    - name: identificationValue
+      value: "59921714"
+      type: query
+    - name: productIdentification
+      value: "1996"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
