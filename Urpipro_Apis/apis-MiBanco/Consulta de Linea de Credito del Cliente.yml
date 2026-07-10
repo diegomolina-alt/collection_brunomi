@@ -20,7 +20,7 @@ runtime:
     - name: documentType
       value: C
     - name: documentNumber
-      value: "10581433"
+      value: "47931031"
 
 settings:
   encodeUrl: true

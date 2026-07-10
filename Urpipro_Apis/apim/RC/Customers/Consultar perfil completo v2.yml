@@ -1,11 +1,11 @@
 info:
-  name: Consultar informacion ADN
+  name: Consultar perfil completo v2
   type: http
-  seq: 4
+  seq: 5
 
 http:
   method: GET
-  url: "{{apim_base_url}}/customer-relationship/v1/employees/information"
+  url: "{{apim_base_url}}/customer-relationship/v2/customers/profile-complete?documentType=C&documentNumber=28274736"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,6 +23,16 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
+  params:
+    - name: documentType
+      value: C
+      type: query
+    - name: documentNumber
+      value: "28274736"
+      type: query
+  body:
+    type: json
+    data: ""
   auth: inherit
 
 settings:

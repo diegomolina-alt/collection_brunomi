@@ -1,5 +1,5 @@
 info:
-  name: API  DE TASAS
+  name: Consultar valores tasas
   type: http
   seq: 2
 
@@ -49,7 +49,7 @@ http:
               "CurrencyCode": "1"
           },
           "ProductInstanceReference": {
-              "ProductAgreementType": "1986"
+              "ProductAgreementType": "1996"
           },
           "RequestedAmount": "30700",
           "Term": "12",

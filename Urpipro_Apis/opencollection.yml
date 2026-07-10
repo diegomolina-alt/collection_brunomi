@@ -32,29 +32,62 @@ request:
           "Save Redis"
         ];
 
+        // Evita que las propias peticiones de autenticación
+        // vuelvan a ejecutar este script.
         if (!authRequests.includes(requestName)) {
-          const apimToken = bru.getVar("apim_access_token");
-          const msToken = bru.getVar("ms_access_token");
 
+          const isTransversal = url.includes("/transversal-api/");
           const isAks = url.includes("aks_base_url");
+          const isApim = url.includes("apim_base_url");
 
-          if (isAks) {
-            if (!msToken) {
-              console.log("AKS: ejecutando Token Front QA + Redis...");
-              await bru.runRequest("auth/Token Front QA");
-              await bru.runRequest("auth/Save Redis");
-            } else {
-              console.log("AKS: token Front existente.");
-            }
-          } else {
-            if (!apimToken || !msToken) {
-              console.log("APIM: ejecutando Token APIM + Token Front QA + Redis...");
-              await bru.runRequest("auth/Token APIM");
-              await bru.runRequest("auth/Token Front QA");
-              await bru.runRequest("auth/Save Redis");
-            } else {
-              console.log("APIM: tokens existentes.");
-            }
+          /*
+           * API TRANSVERSAL
+           * Necesita Token Front y guardar el token en Redis.
+           */
+          if (isTransversal) {
+            console.log(
+              "TRANSVERSAL: renovando Token Front QA y actualizando Redis..."
+            );
+
+            await bru.runRequest("auth/Token Front QA");
+            await bru.runRequest("auth/Save Redis");
+          }
+
+          /*
+           * API AKS NORMAL
+           * También necesita Token Front y Redis.
+           */
+          else if (isAks) {
+            console.log(
+              "AKS: renovando Token Front QA y actualizando Redis..."
+            );
+
+            await bru.runRequest("auth/Token Front QA");
+            await bru.runRequest("auth/Save Redis");
+          }
+
+          /*
+           * API APIM
+           * Necesita renovar Token APIM.
+           * Además, actualizamos Token Front y Redis para los servicios internos.
+           */
+          else if (isApim) {
+            console.log(
+              "APIM: renovando Token APIM, Token Front QA y Redis..."
+            );
+
+            await bru.runRequest("auth/Token APIM");
+            await bru.runRequest("auth/Token Front QA");
+            await bru.runRequest("auth/Save Redis");
+          }
+
+          /*
+           * URL no identificada
+           */
+          else {
+            console.log(
+              `No se identificó el tipo de API para la URL: ${url}`
+            );
           }
         }
 bundled: false

@@ -1,0 +1,7 @@
+info:
+  name: Sales Representative
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit

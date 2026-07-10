@@ -1,11 +1,11 @@
 info:
-  name: QA-Consultar solicitud BFF
+  name: Consultar autonomia ADN v1
   type: http
-  seq: 6
+  seq: 4
 
 http:
   method: GET
-  url: "{{apim_base_url}}/loan-origination/v1/applications/{{applicationId}}"
+  url: "{{apim_base_url}}/customer-relationship/v1/employees/authorization-level"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,15 +23,7 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
-  body:
-    type: json
-    data: ""
   auth: inherit
-
-runtime:
-  variables:
-    - name: applicationId
-      value: cmlv4gcq900a3b60ikpnq1tig
 
 settings:
   encodeUrl: true

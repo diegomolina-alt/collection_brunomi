@@ -1,11 +1,11 @@
 info:
-  name: Consultar portafolio ADN
+  name: Consultar mora de un prestamo v1
   type: http
-  seq: 3
+  seq: 7
 
 http:
   method: GET
-  url: "{{apim_base_url}}/customer-relationship/v1/customers/portfolio?limit=10&page=1"
+  url: "{{apim_base_url}}/customer-relationship/v1/customers/loans/delinquent-account-details?customerId=CUST001&loanId=LN12345"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -24,11 +24,11 @@ http:
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
   params:
-    - name: limit
-      value: "10"
+    - name: customerId
+      value: CUST001
       type: query
-    - name: page
-      value: "1"
+    - name: loanId
+      value: LN12345
       type: query
   body:
     type: json

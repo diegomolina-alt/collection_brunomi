@@ -19,7 +19,7 @@ http:
 runtime:
   variables:
     - name: customerId
-      value: "12470512"
+      value: "8678517"
 
 settings:
   encodeUrl: true

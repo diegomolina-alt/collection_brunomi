@@ -1,11 +1,11 @@
 info:
-  name: Consultar portafolio completo ADN
+  name: Consultar informacion ADN v1
   type: http
   seq: 4
 
 http:
   method: GET
-  url: "{{apim_base_url}}/customer-relationship/v2/customers/portfolio"
+  url: "{{apim_base_url}}/customer-relationship/v1/employees/information"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,26 +23,6 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
-  params:
-    - name: hasCampaign
-      value: "true"
-      type: query
-      disabled: true
-    - name: segmentCode
-      value: RB
-      type: query
-      disabled: true
-    - name: customerType
-      value: ACTIVO
-      type: query
-      disabled: true
-    - name: searchParam
-      value: DIE
-      type: query
-      disabled: true
-  body:
-    type: json
-    data: ""
   auth: inherit
 
 settings:

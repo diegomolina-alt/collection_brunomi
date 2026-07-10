@@ -1,11 +1,11 @@
 info:
-  name: QA-Consultar solicitud BFF
+  name: Consultar portafolio v2
   type: http
-  seq: 6
+  seq: 2
 
 http:
   method: GET
-  url: "{{apim_base_url}}/loan-origination/v1/applications/{{applicationId}}"
+  url: "{{apim_base_url}}/customer-relationship/v2/customers/portfolio"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,15 +23,27 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
+  params:
+    - name: segmentCode
+      value: RMB
+      type: query
+      disabled: true
+    - name: customerType
+      value: INACTIVO
+      type: query
+      disabled: true
+    - name: searchParam
+      value: Accarapi
+      type: query
+      disabled: true
+    - name: hasCampaign
+      value: "true"
+      type: query
+      disabled: true
   body:
     type: json
     data: ""
   auth: inherit
-
-runtime:
-  variables:
-    - name: applicationId
-      value: cmlv4gcq900a3b60ikpnq1tig
 
 settings:
   encodeUrl: true
