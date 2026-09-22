@@ -1,7 +1,7 @@
 info:
   name: QA-Cancelar solicitud BFF
   type: http
-  seq: 4
+  seq: 5
 
 http:
   method: PUT
@@ -41,3 +41,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

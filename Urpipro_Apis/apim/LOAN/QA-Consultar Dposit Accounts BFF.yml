@@ -1,7 +1,7 @@
 info:
   name: QA-Consultar Dposit Accounts BFF
   type: http
-  seq: 5
+  seq: 6
 
 http:
   method: GET
@@ -40,3 +40,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

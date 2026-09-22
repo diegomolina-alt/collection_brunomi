@@ -31,10 +31,11 @@ http:
 runtime:
   variables:
     - name: applicationId
-      value: cmlv4gcq900a3b60ikpnq1tig
+      value: cmubp3ydt0008e00g5zz4vfw8
 
 settings:
   encodeUrl: true
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

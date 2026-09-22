@@ -1,11 +1,11 @@
 info:
-  name: Buscar clientes que tengan campana
+  name: "Buscar ID Topaz con # solicitud"
   type: http
-  seq: 3
+  seq: 11
 
 http:
   method: GET
-  url: "{{apim_base_url}}/customer-relationship/v2/customers/profile-complete?documentType=C&documentNumber={{dni}}"
+  url: "{{apim_base_url}}/loan-origination/v1/applicants/applications?identificationType=DNI&identificationValue={{dni}}"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -24,10 +24,10 @@ http:
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
   params:
-    - name: documentType
-      value: C
+    - name: identificationType
+      value: DNI
       type: query
-    - name: documentNumber
+    - name: identificationValue
       value: "{{dni}}"
       type: query
   body:
@@ -41,14 +41,27 @@ runtime:
       code: |-
         const body = res.getBody();
 
-        const dni = body?.customer?.documentNumber;
-        const adn = body?.customer?.salesRepReference;
-        const email = body?.customer?.email;
-        const campaigns = body?.campaigns;
+        const dni =
+          bru.runner?.iterationData?.get?.("dni") ??
+          bru.getRequestVar?.("dni") ??
+          "SIN DNI";
 
-        if (Array.isArray(campaigns) && campaigns.length > 0 && email != null) {
+        if (!Array.isArray(body) || body.length === 0) {
+          console.log(`❌ DNI ${dni} → sin solicitudes`);
+          return;
+        }
+
+        for (const solicitud of body) {
+
+          const applicationId = solicitud.applicationId;
+          const idTopaz = solicitud.customerOfferId;
+
+          if (!applicationId) {
+            continue;
+          }
+
           console.log(
-            `✅ CON CAMPAÑA | DNI: ${dni} | ADN: ${adn} | CANTIDAD: ${campaigns.length}`
+            `✅ ID Topaz ${idTopaz || "NO ENCONTRADO"} → DNI ${dni} → applicationId ${applicationId}`
           );
         }
 

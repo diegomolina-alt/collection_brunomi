@@ -1,7 +1,7 @@
 info:
   name: creditEvaluation
   type: http
-  seq: 10
+  seq: 11
 
 http:
   method: POST
@@ -44,3 +44,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

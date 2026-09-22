@@ -33,7 +33,7 @@ runtime:
 
         if (token) {
           bru.setVar('apim_access_token', token);
-          console.log('Token guardado correctamente en apim_access_token');
+          //console.log('Token guardado correctamente en apim_access_token');
         } else {
           console.log('No se encontró apim_access_token en la respuesta:', body);
         }
@@ -43,3 +43,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

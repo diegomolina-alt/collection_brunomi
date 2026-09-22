@@ -72,10 +72,7 @@ request:
            * Además, actualizamos Token Front y Redis para los servicios internos.
            */
           else if (isApim) {
-            console.log(
-              "APIM: renovando Token APIM, Token Front QA y Redis..."
-            );
-
+            //console.log("APIM: renovando Token APIM, Token Front QA y Redis...");
             await bru.runRequest("auth/Token APIM");
             await bru.runRequest("auth/Token Front QA");
             await bru.runRequest("auth/Save Redis");
