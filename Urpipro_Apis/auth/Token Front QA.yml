@@ -37,7 +37,7 @@ runtime:
 
         if (token) {
           bru.setVar('ms_access_token', token);
-          console.log('Token guardado correctamente en ms_access_token');
+          //console.log('Token guardado correctamente en ms_access_token');
         } else {
           console.log('No se encontró access_token en la respuesta:', body);
         }
