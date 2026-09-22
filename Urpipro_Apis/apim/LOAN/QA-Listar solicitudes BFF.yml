@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{apim_base_url}}/loan-origination/v1/applicants/applications?identificationType=DNI&identificationValue=48015506"
+  url: "{{apim_base_url}}/loan-origination/v1/applicants/applications?identificationType=DNI&identificationValue=28274736"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -28,7 +28,7 @@ http:
       value: DNI
       type: query
     - name: identificationValue
-      value: "48015506"
+      value: "28274736"
       type: query
   body:
     type: json

@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{apim_base_url}}/api/exp/urpipro/loan-origination/v1/applications/pricing/rates?identificationType=DNI&termMonths=3&requestedAmount=6400&productIdentification=1986&identificationValue=88781237"
+  url: "{{apim_base_url}}/api/exp/urpipro/loan-origination/v1/applications/pricing/rates?identificationType=DNI&termMonths=12&requestedAmount=1500&productIdentification=1986&identificationValue=79574240"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -28,16 +28,16 @@ http:
       value: DNI
       type: query
     - name: termMonths
-      value: "3"
+      value: "12"
       type: query
     - name: requestedAmount
-      value: "6400"
+      value: "1500"
       type: query
     - name: productIdentification
       value: "1986"
       type: query
     - name: identificationValue
-      value: "88781237"
+      value: "79574240"
       type: query
   body:
     type: json

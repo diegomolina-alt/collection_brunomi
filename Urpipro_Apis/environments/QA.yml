@@ -1,0 +1,5 @@
+name: QA
+variables:
+  - name: apim_base_url
+    value: https://apimextqa.mibanco.com.pe/api/exp/urpipro
+    description: ""

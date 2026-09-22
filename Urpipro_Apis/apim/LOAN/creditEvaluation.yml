@@ -1,11 +1,11 @@
 info:
-  name: Consultar perfil basico v1
+  name: creditEvaluation
   type: http
-  seq: 3
+  seq: 10
 
 http:
-  method: GET
-  url: "{{apim_base_url}}/customer-relationship/v1/customers/profile-basic?documentType=C&documentNumber=17415731"
+  method: POST
+  url: "{{apim_base_url}}/loan-origination/v1/applications/credit-evaluation/underwriting/check/open-loans"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -23,16 +23,20 @@ http:
       value: "1"
     - name: Ocp-Apim-Subscription-Key
       value: 68361fdc767e4686855ec88aeb85619f
-  params:
-    - name: documentType
-      value: C
-      type: query
-    - name: documentNumber
-      value: "17415731"
-      type: query
   body:
     type: json
-    data: ""
+    data: |-
+      {
+        "customerReference": {
+          "partyReference": {
+            "clientCode": {
+              "identifier": "DNI",
+              "number": "47931031",
+              "customerCode": "8678517"
+            }
+          }
+        }
+      }
   auth: inherit
 
 settings:
@@ -40,4 +44,3 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-  forwardAuthorizationHeader: true

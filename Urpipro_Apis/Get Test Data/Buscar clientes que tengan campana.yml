@@ -1,11 +1,11 @@
 info:
-  name: Consultar perfil basico v1
+  name: Buscar clientes que tengan campana
   type: http
-  seq: 3
+  seq: 2
 
 http:
   method: GET
-  url: "{{apim_base_url}}/customer-relationship/v1/customers/profile-basic?documentType=C&documentNumber=17415731"
+  url: "{{apim_base_url}}/customer-relationship/v2/customers/profile-complete?documentType=C&documentNumber={{dni}}"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -28,12 +28,29 @@ http:
       value: C
       type: query
     - name: documentNumber
-      value: "17415731"
+      value: "{{dni}}"
       type: query
   body:
     type: json
     data: ""
   auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.getBody();
+
+        const dni = body?.customer?.documentNumber;
+        const adn = body?.customer?.salesRepReference;
+        const email = body?.customer?.email;
+        const campaigns = body?.campaigns;
+
+        if (Array.isArray(campaigns) && campaigns.length > 0 && email != null) {
+          console.log(
+            `✅ CON CAMPAÑA | DNI: ${dni} | ADN: ${adn} | CANTIDAD: ${campaigns.length}`
+          );
+        }
 
 settings:
   encodeUrl: true

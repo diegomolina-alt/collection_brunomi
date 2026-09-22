@@ -21,7 +21,7 @@ http:
       - name: scope
         value: 27c3ed60-dcbf-40e1-99ac-70607969803c/.default
       - name: client_secret
-        value: s438Q~gjkrdx1TtKcjnCb1j6atj7f7rHSGaKZb6X
+        value: ZUR8Q~achVdxRb.3Bb9QOUfzB6aa.SlX6I~rddrJ
 
 runtime:
   scripts:

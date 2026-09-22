@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "certs": [
+    {
+      "domain": "apimextqa.mibanco.com.pe",
+      "type": "pfx",
+      "pfxFilePath": "../certs/client-aes.pfx",
+      "passphrase": "tI'2hUAMHs4qTGYx"
+    }
+  ]
+}

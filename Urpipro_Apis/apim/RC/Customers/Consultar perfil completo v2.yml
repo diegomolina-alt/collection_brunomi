@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{apim_base_url}}/customer-relationship/v2/customers/profile-complete?documentType=C&documentNumber=28274736"
+  url: "{{apim_base_url}}/customer-relationship/v2/customers/profile-complete?documentType=C&documentNumber=17415731"
   headers:
     - name: Authorization-be
       value: Bearer {{ms_access_token}}
@@ -28,7 +28,7 @@ http:
       value: C
       type: query
     - name: documentNumber
-      value: "28274736"
+      value: "17415731"
       type: query
   body:
     type: json
@@ -40,3 +40,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

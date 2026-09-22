@@ -21,11 +21,11 @@ http:
       - name: scope
         value: api://0b31165e-a3e5-4940-a167-b47b83662d98/access_as_user offline_access openid profile
       - name: client_secret
-        value: s438Q~gjkrdx1TtKcjnCb1j6atj7f7rHSGaKZb6X
+        value: ZUR8Q~achVdxRb.3Bb9QOUfzB6aa.SlX6I~rddrJ
       - name: username
-        value: 17353tmp@mibanco.com.pe
+        value: 19723tmp@mibanco.com.pe
       - name: password
-        value: 9[1oBT9D1!
+        value: Mibanco$4
 
 runtime:
   scripts:
@@ -47,3 +47,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -16,7 +16,7 @@ config:
   clientCertificates:
     - domain: apimextqa.mibanco.com.pe
       type: pkcs12
-      pkcs12FilePath: ../certs/client-aes.pfx
+      pkcs12FilePath: ../certs/client.pfx
       passphrase: tI'2hUAMHs4qTGYx
 
 request:
