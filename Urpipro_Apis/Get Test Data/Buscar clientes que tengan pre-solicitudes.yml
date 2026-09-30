@@ -42,6 +42,7 @@ runtime:
         const body = res.getBody();
 
         const dni = body?.customer?.documentNumber;
+        const adn = body?.customer?.salesRepReference;
         const applications = body?.applications ?? [];
 
         // Buscar TODAS las aplicaciones con estado ACCEPTED
@@ -52,7 +53,7 @@ runtime:
         // Solo mostramos clientes que tengan al menos una ACCEPTED
         if (acceptedApplications.length > 0) {
           console.log(
-            `✅ CLIENTE CON APPLICATION ACCEPTED | DNI: ${dni} | CANTIDAD: ${acceptedApplications.length}`
+            `✅ CLIENTE CON PRE-SOLICITUDES | DNI: ${dni} |ADN ${adn} | CANTIDAD: ${acceptedApplications.length}`
           );
         }
 
@@ -62,3 +63,9 @@ settings:
   followRedirects: true
   maxRedirects: 5
   forwardAuthorizationHeader: true
+
+docs: |-
+  bru run "Get Test Data/Buscar clientes que tengan pre-solicitudes.yml" \
+  --env STG \
+  --csv-file-path "Get Test Data/clientes.csv" \
+  --client-cert-config client-cert-config.json

@@ -59,3 +59,9 @@ settings:
   followRedirects: true
   maxRedirects: 5
   forwardAuthorizationHeader: true
+
+docs: |-
+  bru run "Get Test Data/Buscar clientes que no tengan correo.yml" \
+  --env STG \
+  --csv-file-path "Get Test Data/clientes.csv" \
+  --client-cert-config client-cert-config.json

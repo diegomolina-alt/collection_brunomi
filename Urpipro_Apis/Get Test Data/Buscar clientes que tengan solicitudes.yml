@@ -42,6 +42,7 @@ runtime:
         const body = res.getBody();
 
         const dni = body?.customer?.documentNumber;
+        const adn = body?.customer?.salesRepReference;
         const applications = body?.applications ?? [];
 
         const targetStatuses = [
@@ -64,7 +65,7 @@ runtime:
         if (matchedApplications.length > 0) {
 
           console.log(
-            `✅ CLIENTE CON SOLICITUDES | DNI: ${dni} | CANTIDAD: ${matchedApplications.length}`
+            `✅ CLIENTE CON SOLICITUDES | DNI: ${dni} | ADN: ${adn} | CANTIDAD: ${matchedApplications.length}`
           );
 
         }
@@ -75,3 +76,9 @@ settings:
   followRedirects: true
   maxRedirects: 5
   forwardAuthorizationHeader: true
+
+docs: |-
+  bru run "Get Test Data/Buscar clientes que tengan solicitudes.yml" \
+  --env STG \
+  --csv-file-path "Get Test Data/clientes.csv" \
+  --client-cert-config client-cert-config.json

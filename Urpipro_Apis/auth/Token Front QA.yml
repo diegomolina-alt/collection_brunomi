@@ -23,9 +23,9 @@ http:
       - name: client_secret
         value: ZUR8Q~achVdxRb.3Bb9QOUfzB6aa.SlX6I~rddrJ
       - name: username
-        value: 19723tmp@mibanco.com.pe
+        value: tmpqa15305@mibanco.com.pe
       - name: password
-        value: Mibanco$4
+        value: SD1$USRTEMP06
 
 runtime:
   scripts:

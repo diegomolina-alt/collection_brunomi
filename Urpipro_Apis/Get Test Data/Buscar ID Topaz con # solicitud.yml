@@ -71,3 +71,9 @@ settings:
   followRedirects: true
   maxRedirects: 5
   forwardAuthorizationHeader: true
+
+docs: |-
+  bru run "Get Test Data/Buscar ID Topaz con # solicitud.yml" \
+  --env QA \
+  --csv-file-path "Get Test Data/clientes_con_solicitud.csv" \
+  --client-cert-config client-cert-config.json
